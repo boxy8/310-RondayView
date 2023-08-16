@@ -28,11 +28,17 @@ public class EventsFirestoreManager {
     public void addEvent(Event event){
         eventsCollectionReference.add(event);
     }
-    void updateEvent(){
-        // TODO
+
+    /**
+     * Updates the event in the database with the new event
+     * @param event
+     */
+    public void updateEvent(Event event){
+        String documentId = event.getDocumentId();
+        eventsCollectionReference.document(documentId).set(event);
     }
-    void deleteEvent(){
-        // TODO
+    void deleteEvent(String documentId){
+        eventsCollectionReference.document(documentId).delete();
     }
     public void getAllEvents(OnCompleteListener<QuerySnapshot> onCompleteListener){
         eventsCollectionReference.get().addOnCompleteListener(onCompleteListener);
@@ -40,6 +46,5 @@ public class EventsFirestoreManager {
     void getLikedEvents(){
         // TODO
     }
-
 
 }
