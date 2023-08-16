@@ -16,6 +16,7 @@ public class EventsFirestoreManager {
 
     private EventsFirestoreManager (){
         firebaseFirestore = FirebaseFirestore.getInstance();
+        eventsCollectionReference = firebaseFirestore.collection("events");
     }
 
     public static EventsFirestoreManager getInstance(){
